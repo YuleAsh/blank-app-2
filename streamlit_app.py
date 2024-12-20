@@ -328,7 +328,6 @@ with tab2:
     styled_table = summary_table2_display.style.applymap(highlight_settlement_status1, subset=['Settlement Status']).set_properties(**{'text-align': 'left'})
     st.dataframe(styled_table, use_container_width=True, height=250)
 
-
 # Tab 3: Dispute Summary
 with tab3:
     st.subheader("Dispute Summary")
@@ -434,9 +433,9 @@ with tab3:
     
     data = {
         'Carrier Name': [f'Carrier{i}' for i in range(1, 16)],
-        'Invoice Amount (USD)': np.random.randint(10000, 25000, 15),
-        'Disputed Amount (USD)': np.random.randint(1000, 5000, 15),
-        'Disputed Usage (Mins)': np.random.randint(1000, 5000, 15),
+        'Invoice Amount (USD)': np.round(np.random.uniform(10000, 25000, 15),2),
+        'Disputed Amount (USD)': np.round(np.random.uniform(1000, 5000, 15),2),
+        'Disputed Usage (Mins)': np.round(np.random.uniform(1000, 5000, 15),2),
         'Dispute Type': np.random.choice(['Rate Dispute', 'Volume Dispute'], 15),
         'Settlement Status': np.random.choice(['Pending', 'In Progress'], 15)
     }
