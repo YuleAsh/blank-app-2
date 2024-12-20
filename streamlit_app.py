@@ -626,7 +626,4 @@ with tab4:
         use_container_width=True, 
         height=250
     )
-        use_container_width=True, 
-        height=250
-    )
 
