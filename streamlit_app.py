@@ -133,7 +133,7 @@ with tab1:
                         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
                 <h5 style="color: #FF4D4D; margin: 0; font-size: 1.2em;">✅ Settled</h5>
                 <p style="margin: 10px 0; color: #1E4DD8; font-size: 1.5em; font-weight: bold;">
-                    {settled_count} Invoices
+                    {84} Invoices
                 </p>
             </div>
             <div style="text-align: center; padding: 15px; width: 260px; 
@@ -142,7 +142,7 @@ with tab1:
                         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
                 <h5 style="color: #FF4D4D; margin: 0; font-size: 1.2em;">❌ Unsettled</h5>
                 <p style="margin: 10px 0; color: #1E4DD8; font-size: 1.5em; font-weight: bold;">
-                    {unsettled_count} Invoices
+                    {36} Invoices
                 </p>
             </div>
         </div>
@@ -177,6 +177,10 @@ with tab1:
                 'font': {'size': 24},
                 'x': 0.35
             }
+        )
+        # Update the y-axis label
+        processed_vs_disputed.update_layout(
+            yaxis_title="Amount (USD)"  # Set y-axis label
         )
         st.plotly_chart(processed_vs_disputed, use_container_width=True)
 
@@ -246,13 +250,13 @@ with tab2:
                             background: linear-gradient(135deg, #A3ABFF, #ECECFF); 
                             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease;">
                     <h5 style="color: #6C63FF; margin: 0; font-size: 1.5em;">🔴 Reconciled </h5>
-                    <p style="margin: 10px 0; color: #2B55CC; font-size: 1.2em; font-weight: bold;">
-                        {current_cycle_count*15} Invoices
+                    <p style="margin: 10px 0; color: #2B55CC; font-size: 1.3em; font-weight: bold;">
+                        {84} Invoices
                     </p>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        Payables: <span style="color: #2B55CC; font-weight: bold;">${current_cycle_amount*18:,.2f}</span>
+                        Payables: <span style="color: #2B55CC; font-weight: bold;">${134589.76}</span>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        Receivables: <span style="color: #2B55CC; font-weight: bold;">${current_cycle_payables_amount*16:,.2f}</span>
+                        Receivables: <span style="color: #2B55CC; font-weight: bold;">${227894.29}</span>
                     </p>
                 </div>
             </a>
@@ -264,13 +268,13 @@ with tab2:
                             background: linear-gradient(135deg, #FFA3A3, #FFECEC); 
                             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease;">
                     <h5 style="color: #FF6B6B; margin: 0; font-size: 1.5em;">🔴 Unreconciled </h5>
-                    <p style="margin: 10px 0; color: #CC2B2B; font-size: 1.2em; font-weight: bold;">
-                        {current_cycle_payables_count*(6)+1} Invoices
+                    <p style="margin: 10px 0; color: #CC2B2B; font-size: 1.3em; font-weight: bold;">
+                        {36} Invoices
                     </p>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        Payables: <span style="color: #CC2B2B; font-weight: bold;">${current_cycle_amount*(9):,.2f}</span>
+                        Payables: <span style="color: #CC2B2B; font-weight: bold;">${35926.88}</span>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        Receivables: <span style="color: #CC2B2B; font-weight: bold;">${current_cycle_payables_amount*(11):,.2f}</span>
+                        Receivables: <span style="color: #CC2B2B; font-weight: bold;">${55496.59}</span>
                     </p>
                 </div>
             </a>
@@ -427,7 +431,7 @@ with tab3:
     volume_disputes = len(filtered_df[filtered_df['Dispute Type'] == 'Volume Dispute'])
 
     # Simulate input data
-    np.random.seed(42)  # For reproducibility
+    
     data = {
         'Carrier Name': [f'Carrier{i}' for i in range(1, 16)],
         'Invoice Amount (USD)': np.random.randint(10000, 25000, 15),
@@ -527,7 +531,7 @@ with tab4:
                             background: linear-gradient(135deg, #A3ABFF, #ECECFF); 
                             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease;">
                     <h5 style="color: #6C63FF; margin: 0; font-size: 1.5em;">🔴 Unsettled Invoices </h5>
-                    <p style="margin: 10px 0; color: #2B55CC; font-size: 1.2em; font-weight: bold;">
+                    <p style="margin: 10px 0; color: #2B55CC; font-size: 1.3em; font-weight: bold;">
                         {36}
                     </p>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
@@ -545,7 +549,7 @@ with tab4:
                             background: linear-gradient(135deg, #FFA3A3, #FFECEC); 
                             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease;">
                     <h5 style="color: #FF6B6B; margin: 0; font-size: 1.5em;">🔴 Unsettled Amount </h5>
-                    <p style="margin: 10px 0; color: #CC2B2B; font-size: 1.2em; font-weight: bold;">
+                    <p style="margin: 10px 0; color: #CC2B2B; font-size: 1.3em; font-weight: bold;">
                         ${97643.89}
                     </p>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
@@ -619,6 +623,9 @@ with tab4:
     summary_table4_display = summary_table4_rounded.astype(str)
     st.dataframe(
         summary_table4_display.style.set_properties(**{'text-align': 'center'}), 
+        use_container_width=True, 
+        height=250
+    )
         use_container_width=True, 
         height=250
     )
