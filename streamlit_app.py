@@ -1,34 +1,34 @@
 
+
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import streamlit.components.v1 as components
 import base64
+import os
+
 
 # Page configuration
 st.set_page_config(layout="wide", page_title="Billing Reconciliation Dashboard")
 
-# Function to encode the logo as Base64
 def get_base64_image(image_path):
     """
-    Convert an image to a base64 string for embedding in HTML.
-    :param image_path: Path to the image file
-    :return: Base64 encoded string of the image
+    Convert an image to a base64-encoded string.
     """
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode("utf-8")
+    try:
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode("utf-8")
+    except FileNotFoundError:
+        st.error(f"Logo file not found at: {image_path}")
+        return None
 
-# Function to display the logo at the top of the page
 def display_page_logo():
-    """
-    Display a centered logo at the top of the page with increased size.
-    """
-    logo_path = r"C:\Users\Ashis\Desktop\DU Automation V2\Du.png"  # Update your logo path here
+    logo_url = "https://raw.githubusercontent.com/YuleAsh/blank-app-1/main/Du.png"
     st.markdown(
         f"""
-        <div style="text-align: center; margin-top: 10px;">
-            <img src="data:image/png;base64,{get_base64_image(logo_path)}" 
-                 style="width: 150%; max-width: 300px; height: auto; margin-bottom: 20px;">
+        <div style="text-align: center;">
+            <img src="{logo_url}" alt="Logo" width="300" />
         </div>
         """,
         unsafe_allow_html=True,
@@ -36,6 +36,7 @@ def display_page_logo():
 
 # Call the logo display function at the very top
 display_page_logo()
+
 
 
 # Set display format for pandas globally
@@ -48,15 +49,21 @@ def generate_sample_data():
     months = pd.date_range(start="2024-01-01", periods=12, freq='M').strftime('%Y-%m').tolist()
     carriers = [f'Carrier {i}' for i in range(1, 11)]  # 10 unique carriers
     data = []
+    invoice_counter = 1  # To create sequential invoice numbers
 
     for month in months:
         for carrier in carriers:
-            invoice_amount = np.round(np.random.uniform(1000, 5000),2)
+            invoice_amount = np.round(np.random.uniform(1000, 5000), 2)
             is_disputed = np.random.rand() < 0.2
-            disputed_amount = np.round(np.random.uniform(0, invoice_amount * 0.3) if is_disputed else 0,2)
+            disputed_amount = np.round(np.random.uniform(0, invoice_amount * 0.3) if is_disputed else 0, 2)
             billing_cycle = f'{2024}-{int(month[-2:]):02d}-{np.random.choice([1, 2])}'  # Format: Year-Month-Fortnight
 
+            # Generate a unique invoice number
+            invoice_number = f'{carrier.replace(" ", "")[:3].upper()}-{month.replace("-", "")}-{invoice_counter:04d}'
+            invoice_counter += 1
+
             data.append({
+                'Invoice Number': invoice_number,
                 'Carrier Name': carrier,
                 'Invoice Amount (USD)': invoice_amount,
                 'Disputed Amount (USD)': disputed_amount,
@@ -69,6 +76,7 @@ def generate_sample_data():
             })
 
     return pd.DataFrame(data)
+
 
 df = generate_sample_data()
 df=df.round(2)
@@ -96,7 +104,6 @@ def create_summary_table(data, columns):
         if col in table.columns:
             table[col] = table[col].map("{:.2f}".format)
     return table
-
 # Tabs
 tab1, tab2, tab3, tab4 = st.tabs(["Invoice Reconciliation", "Reconciliation Summary", "Dispute Summary", "Settlement Summary"])
 # Tab 1: Invoice Reconciliation
