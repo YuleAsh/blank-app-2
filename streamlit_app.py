@@ -251,12 +251,12 @@ with tab2:
                             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease;">
                     <h5 style="color: #6C63FF; margin: 0; font-size: 1.5em;">🔴 Reconciled </h5>
                     <p style="margin: 10px 0; color: #2B55CC; font-size: 1.3em; font-weight: bold;">
-                        {84} Invoices
+                        {95} Invoices
                     </p>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        Payables: <span style="color: #2B55CC; font-weight: bold;">${134589.76}</span>
+                        Payables: <span style="color: #2B55CC; font-weight: bold;">${134,589.76}</span>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        Receivables: <span style="color: #2B55CC; font-weight: bold;">${227894.29}</span>
+                        Receivables: <span style="color: #2B55CC; font-weight: bold;">${227,894.29}</span>
                     </p>
                 </div>
             </a>
@@ -269,12 +269,12 @@ with tab2:
                             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease;">
                     <h5 style="color: #FF6B6B; margin: 0; font-size: 1.5em;">🔴 Unreconciled </h5>
                     <p style="margin: 10px 0; color: #CC2B2B; font-size: 1.3em; font-weight: bold;">
-                        {36} Invoices
+                        {25} Invoices
                     </p>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        Payables: <span style="color: #CC2B2B; font-weight: bold;">${35926.88}</span>
+                        Payables: <span style="color: #CC2B2B; font-weight: bold;">${35,926.88}</span>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        Receivables: <span style="color: #CC2B2B; font-weight: bold;">${55496.59}</span>
+                        Receivables: <span style="color: #CC2B2B; font-weight: bold;">${55,496.59}</span>
                     </p>
                 </div>
             </a>
@@ -552,9 +552,9 @@ with tab4:
                         ${97643.89}
                     </p>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        In Process: <span style="color: #CC2B2B; font-weight: bold;">${55322.53}</span>
+                        In Process: <span style="color: #CC2B2B; font-weight: bold;">${55,322.53}</span>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
-                        Disputed: <span style="color: #CC2B2B; font-weight: bold;">${42321.36}</span>
+                        Disputed: <span style="color: #CC2B2B; font-weight: bold;">${42,321.36}</span>
                     </p>
                 </div>
             </a>
