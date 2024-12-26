@@ -269,7 +269,7 @@ with tab2:
                             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease;">
                     <h5 style="color: #FF6B6B; margin: 0; font-size: 1.5em;">🔴 Unreconciled </h5>
                     <p style="margin: 10px 0; color: #CC2B2B; font-size: 1.3em; font-weight: bold;">
-                        {25} Invoices
+                        {45} Invoices
                     </p>
                     <p style="margin: 5px 0; color: #555; font-size: 1.1em;">
                         Payables: <span style="color: #CC2B2B; font-weight: bold;">${35,926.88}</span>
